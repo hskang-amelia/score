@@ -18,4 +18,5 @@ Tracing
 .. toctree::
    :maxdepth: 1
 
+   requirements/index
    architecture/index

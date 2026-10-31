@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _tracing_requirements:
+
 Tracing Requirements
 ####################
 
@@ -180,6 +182,11 @@ Configuration and Output
 
 Freedom from Interference
 =========================
+
+These requirements bound what the tracing framework itself does inside a producer. Their effect on the whole
+system also depends on the deployment, which the system integrator provides through the assumptions of use
+:need:`aou_req__feature_tracing__daemon_priority`, :need:`aou_req__feature_tracing__shm_read_only` and
+:need:`aou_req__feature_tracing__config_safe_fs`.
 
 .. feat_req:: Non-Blocking Trace Calls
    :id: feat_req__tracing__non_blocking

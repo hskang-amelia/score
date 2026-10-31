@@ -117,9 +117,21 @@ QM daemon affect them:
 - The execution time of a trace call has a documented upper bound that does not
   depend on the size of the traced data.
 
+These properties bound the trace call inside the producer. The rest depends on the
+deployment, so the proposal adds five assumptions of use for the system integrator:
+
+| Assumption of use | Safety | Why it is needed |
+| --- | --- | --- |
+| {need}`aou_req__feature_tracing__daemon_priority` | ASIL_B | The QM daemon must not delay safety-related processes. |
+| {need}`aou_req__feature_tracing__shm_read_only` | ASIL_B | Enforces read-only access to producer memory at operating system level. |
+| {need}`aou_req__feature_tracing__config_safe_fs` | ASIL_B | Trace filter configuration is read by safety-related producers. |
+| {need}`aou_req__feature_tracing__data_protection` | QM | Trace data can contain communication payload. |
+| {need}`aou_req__feature_tracing__buffer_dimensioning` | QM | Undersized buffers drop traces; producers are not affected. |
+
 ### Feature requirements
 
-This proposal adds 17 feature requirements (`feat_req__tracing__*`), grouped as
+This proposal adds 17 feature requirements (`feat_req__tracing__*`) and the five
+assumptions of use above (`aou_req__feature_tracing__*`). The requirements are grouped as
 communication tracing, configuration and output, freedom from interference,
 security, and execution and memory tracing. Requirements derived from the ASIL_B
 stakeholder requirement are ASIL_B, because QM requirements cannot be derived
